@@ -23,7 +23,9 @@ Browser import the min.js file.
 
 ##How to use
 
-UrlBuilder is a static class, that means you don't instantiate it but call the methods directly.
+UrlBuilder is a static class, that means you don't instantiate it but call the methods directly, it also means that no matter where you define the routes you can use them anywhere later.
+
+The routes can be named and this is recommended use.
 
 Methods
 
@@ -34,10 +36,22 @@ Methods
 - isRouteCreated(url)
 
 Example:
+
+SomeClass1.js 
 ```
+const UrlBuilder = require('basic-url-builder');
+const SomeClass2 = require('SomeClass2.js')
+
 UrlBuilder.setBaseUrl('http://someUrl.com');
 
 UrlBuilder.setRoute('/service', 'service');
+
+console.log(UrlBuilder.getRoute('service'));
+```
+
+SomeClass2.js
+```
+const UrlBuilder = require('basic-url-builder');
 
 console.log(UrlBuilder.getRoute('service'));
 ```
