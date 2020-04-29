@@ -1,6 +1,6 @@
 {
   "name": "basic-url-builder",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "This module has the objective of providing a basic way of working with urls",
   "main": "index.js",
   "files": [
