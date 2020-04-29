@@ -1,12 +1,7 @@
 class UrlBuilder {
   static setBaseUrl(url) {
-    if (!this.instance) {
-      this.instance = this;
-      this.baseUrl = url;
-      this.routes = new Map();
-    }
-
-    return this.instance;
+    this.baseUrl = url;
+    this.routes = new Map();
   }
 
   static getBaseUrl() {
