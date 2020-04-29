@@ -4,12 +4,16 @@
   "description": "This module has the objective of providing a basic way of working with urls",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/"
   },
   "keywords": [
     "url",
     "builder"
   ],
   "author": "jogarcia",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2"
+  }
 }
