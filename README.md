@@ -27,7 +27,9 @@ UrlBuilder is a static class, that means you don't instantiate it but call the m
 
 The routes can be named and this is recommended use.
 
-Methods
+Methods:
+
+Warning at the current time using setBaseUrl for a second time will destroy the routes.
 
 - setBaseUrl(url)
 - getBaseUrl()
