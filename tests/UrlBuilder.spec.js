@@ -22,4 +22,11 @@ describe("UrlBuilder.js", function () {
       UrlBuilder.routes.should.be.a('map');
     });
   });
+
+  describe("getBaseUrl", function () {
+    it("Should return the base url correctly", function () {
+      UrlBuilder.setBaseUrl("http://testurl.com");
+      UrlBuilder.getBaseUrl().should.equal("http://testurl.com");
+    });
+  });
 });
