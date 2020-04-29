@@ -9,6 +9,10 @@
   "scripts": {
     "test": "mocha tests/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tauromachian/basic-url-builder.git"
+  },
   "keywords": [
     "url",
     "builder"
