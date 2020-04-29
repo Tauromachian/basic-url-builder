@@ -2,7 +2,7 @@ const chai = require("chai");
 const expect = chai.expect;
 const should = chai.should();
 
-const UrlBuilder = require("./../UrlBuilder");
+const UrlBuilder = require("../src/UrlBuilder");
 
 describe("UrlBuilder.js", function () {
   it("Should exist", function () {

@@ -1,4 +1,4 @@
-const UrlBuilder = require("./UrlBuilder");
+const UrlBuilder = require("./src/UrlBuilder");
 
 module.exports = UrlBuilder;
 
