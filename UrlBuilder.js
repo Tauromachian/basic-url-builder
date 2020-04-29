@@ -1,7 +1,12 @@
 class UrlBuilder {
   static setBaseUrl(url) {
+    if(typeof url !== "string"){
+      return 1;
+    }
+
     this.baseUrl = url;
     this.routes = new Map();
+    return 0;
   }
 
   static getBaseUrl() {
