@@ -29,4 +29,14 @@ describe("UrlBuilder.js", function () {
       UrlBuilder.getBaseUrl().should.equal("http://testurl.com");
     });
   });
+
+  describe("setRoute", function () {
+    it("Should insert routes correctly", function () {
+      UrlBuilder.setBaseUrl("http://testurl.com");
+      UrlBuilder.setRoute("/someRoute", 'someRouteName');
+      UrlBuilder.routes.get("someRouteName").should.equal("http://testurl.com/someRoute");
+      UrlBuilder.setRoute("/someRoute2", 'someOtherRouteName');
+      UrlBuilder.routes.get("someOtherRouteName").should.equal("http://testurl.com/someRoute2");
+    });
+  });
 });
