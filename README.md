@@ -23,9 +23,19 @@ Browser import the min.js file.
 
 ##How to use
 
+UrlBuilder is a static class, that means you don't instantiate it but call the methods directly.
+
+Methods
+
+- setBaseUrl(url)
+- getBaseUrl()
+- setRoute(url, routeName)
+- getRoute(routeName)
+- isRouteCreated(url)
+
 Example:
 ```
-UrlBuilder.setBaseUrl('http://lol.com');
+UrlBuilder.setBaseUrl('http://someUrl.com');
 
 UrlBuilder.setRoute('/service', 'service');
 
