@@ -4,20 +4,25 @@ class UrlBuilder {
    * Sets the base url of the UrlBuilder
    * @param {String} url Base url
    */
-  static setBaseUrl(url) {
+  static setBaseUrl(url, name="def") {
     if(typeof url !== "string"){
       return 1;
     }
 
-    this.baseUrl = url;
+    this.defaultBaseUrl = url;
+    this.baseUrls = new Map();
     this.routes = new Map();
     return 0;
   }
 
   static getBaseUrl() {
-    return this.baseUrl;
+    return this.defaultBaseUrl;
   }
 
+  static addBaseUrl(url, name) {
+    this.baseUrls.set(url, name);
+  }
+  
   /**
    * Creates the complete named route that can be later on used
    * @param {String} url Url of the route
@@ -50,7 +55,7 @@ class UrlBuilder {
   }
 
   static _makeUrl(url) {
-    const newUrl = this.baseUrl + url;
+    const newUrl = this.defaultBaseUrl + url;
     return newUrl;
   }
 }
