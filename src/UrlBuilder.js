@@ -15,8 +15,11 @@ class UrlBuilder {
     return 0;
   }
 
-  static getBaseUrl() {
-    return this.defaultBaseUrl;
+  static getBaseUrl(name) {
+    if(!name){
+      return this.defaultBaseUrl;
+    }
+    return this.baseUrls.get(name);
   }
 
   static addBaseUrl(url, name) {
