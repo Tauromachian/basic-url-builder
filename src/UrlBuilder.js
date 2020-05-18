@@ -11,6 +11,7 @@ class UrlBuilder {
 
     this.defaultBaseUrl = url;
     this.baseUrls = new Map();
+    this.baseUrls.set(this.defaultBaseUrl, name)
     this.routes = new Map();
     return 0;
   }
