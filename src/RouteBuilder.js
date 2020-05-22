@@ -28,7 +28,7 @@ class RouteBuilder {
   }
 
   _makeUrl(url) {
-    const newUrl = this.defaultBaseUrl + url;
+    const newUrl = this.baseUrl + url;
     return newUrl;
   }
 
