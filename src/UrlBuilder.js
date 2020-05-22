@@ -49,7 +49,7 @@ class UrlBuilder {
    * @param {String} routeName Name of the route or the route itself if no name was provided at insert
    */
   static getRoute(routeName) {
-    this.defaultBaseUrl.getRoute(routeName);
+    return this.defaultBaseUrl.getRoute(routeName);
   }
 
   /**
