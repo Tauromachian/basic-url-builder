@@ -44,7 +44,7 @@ class RouteBuilder {
     this.baseUrl = url;
   }
 
-  getBaserUrl(){
+  getBaseUrl(){
     return this.baseUrl;
   }
 }
