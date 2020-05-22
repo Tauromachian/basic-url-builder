@@ -18,7 +18,7 @@ describe("UrlBuilder.js", function () {
     });
     it("Should instance url and routes correctly", function () {
       UrlBuilder.setBaseUrl("http://testurl.com");
-      UrlBuilder.baseUrl.should.equal("http://testurl.com");
+      UrlBuilder.defaultBaseUrl.should.be.a("object");
       UrlBuilder.routes.should.be.a('map');
     });
   });
