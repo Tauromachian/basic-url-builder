@@ -16,6 +16,10 @@ class UrlBuilder {
     return 0;
   }
 
+  static baseUrl(name){
+    return this.routes.get(name);
+  }
+
   static getBaseUrl(name) {
     if (!name) {
       return this.defaultBaseUrl.getBaserUrl();
