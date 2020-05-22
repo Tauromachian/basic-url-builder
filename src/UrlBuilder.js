@@ -57,7 +57,7 @@ class UrlBuilder {
    * @param {String} routeName Name of the route
    */
   static isRouteCreated(routeName) {
-    return this.routes.has(routeName);
+    return this.defaultBaseUrl.isRouteCreated(routeName);
   }
 }
 
