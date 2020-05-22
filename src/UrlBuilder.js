@@ -43,8 +43,8 @@ class UrlBuilder {
    * @param {String} url Url of the route
    * @param {String} routeName Name Of the route
    */
-  static setRoute(url, routeName) {
-    this.defaultBaseUrl.setRoute(url, routeName);
+  static addRoute(url, routeName) {
+    this.defaultBaseUrl.addRoute(url, routeName);
   }
 
   /**
