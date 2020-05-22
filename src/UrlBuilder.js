@@ -10,9 +10,12 @@ class UrlBuilder {
       return 1;
     }
 
-    this.defaultBaseUrl = new RouteBuilder(url);
-    this.routes = new Map();
-    this.routes.set(name, this.defaultBaseUrl);
+    if(!this.defaultBaseUrl){
+      this.defaultBaseUrl = new RouteBuilder(url);
+      this.routes = new Map();
+      this.routes.set(name, this.defaultBaseUrl);
+    }
+
     return 0;
   }
 
