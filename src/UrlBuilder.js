@@ -11,9 +11,8 @@ class UrlBuilder {
     }
 
     this.defaultBaseUrl = new RouteBuilder(url);
-    this.baseUrls = new Map();
-    this.baseUrls.set(this.defaultBaseUrl, name);
     this.routes = new Map();
+    this.routes.set(this.defaultBaseUrl, name);
     return 0;
   }
 
@@ -21,11 +20,11 @@ class UrlBuilder {
     if (!name) {
       return this.defaultBaseUrl;
     }
-    return this.baseUrls.get(name);
+    return this.routes.get(name);
   }
 
   static addBaseUrl(url, name) {
-    this.baseUrls.set(url, name);
+    this.routes.set(new RouteBuilder(url), name);
   }
 
   /**
