@@ -23,8 +23,8 @@ describe("UrlBuilder.js", function () {
       UrlBuilder.routes.should.be.a("map");
     });
     it("Should insert the url with the name correctly", function() {
-      UrlBuilder.setBaseUrl("http://testurl.com", "dev");
-      UrlBuilder.routes.get("dev").getBaseUrl().should.equal("http://testurl.com");
+      UrlBuilder.setBaseUrl("http://testurl.com");
+      UrlBuilder.routes.get("def").getBaseUrl().should.equal("http://testurl.com");
     });
   });
 
