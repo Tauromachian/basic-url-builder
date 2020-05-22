@@ -9,12 +9,12 @@ describe("RouteBuilder.js", function () {
     expect(RouteBuilder).to.exist;
   });
   
-  describe("setRoute", function () {
+  describe("addRoute", function () {
     it("Should insert routes correctly", function () {
       let routeBuilder = new RouteBuilder("http://testurl.com");
-      routeBuilder.setRoute("/someRoute", 'someRouteName');
+      routeBuilder.addRoute("/someRoute", 'someRouteName');
       routeBuilder.routes.get("someRouteName").should.equal("http://testurl.com/someRoute");
-      routeBuilder.setRoute("/someRoute2", 'someOtherRouteName');
+      routeBuilder.addRoute("/someRoute2", 'someOtherRouteName');
       routeBuilder.routes.get("someOtherRouteName").should.equal("http://testurl.com/someRoute2");
     });
   });
@@ -22,9 +22,9 @@ describe("RouteBuilder.js", function () {
   describe("getRoute", function () {
     it("Should return the routes correctly", function () {
       let routeBuilder = new RouteBuilder("http://testurl.com");
-      routeBuilder.setRoute("/someRoute", 'someRouteName');
+      routeBuilder.addRoute("/someRoute", 'someRouteName');
       routeBuilder.getRoute('someRouteName').should.equal("http://testurl.com/someRoute");
-      routeBuilder.setRoute("/someRoute2", 'someOtherRouteName');
+      routeBuilder.addRoute("/someRoute2", 'someOtherRouteName');
       routeBuilder.getRoute("someOtherRouteName").should.equal("http://testurl.com/someRoute2");
     });
   });
@@ -32,14 +32,14 @@ describe("RouteBuilder.js", function () {
   describe("isRouteCreated", function () {
     it("Should return true if the route has been created", function () {
       let routeBuilder = new RouteBuilder("http://testurl.com");
-      routeBuilder.setRoute("/someRoute", 'someRouteName');
+      routeBuilder.addRoute("/someRoute", 'someRouteName');
       routeBuilder.isRouteCreated("someRouteName").should.equal(true);
-      routeBuilder.setRoute("/someRoute", 'someRouteName2');
+      routeBuilder.addRoute("/someRoute", 'someRouteName2');
       routeBuilder.isRouteCreated("someRouteName2").should.equal(true);
     });
     it("Should return false if the route hasn't been created", function () {
       let routeBuilder = new RouteBuilder("http://testurl.com");
-      routeBuilder.setRoute("/someRoute", 'someRouteName');
+      routeBuilder.addRoute("/someRoute", 'someRouteName');
       routeBuilder.isRouteCreated("someRouteNameError").should.equal(false);
     });
   });

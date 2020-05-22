@@ -38,25 +38,25 @@ describe("UrlBuilder.js", function () {
   describe("getRoute", function () {
     it("Should return the routes correctly", function () {
       UrlBuilder.setBaseUrl("http://testurl.com");
-      UrlBuilder.defaultBaseUrl.setRoute("/someRoute", "someRouteName");
+      UrlBuilder.defaultBaseUrl.addRoute("/someRoute", "someRouteName");
       UrlBuilder.getRoute("someRouteName").should.equal(
         "http://testurl.com/someRoute"
       );
-      UrlBuilder.defaultBaseUrl.setRoute("/someRoute2", "someOtherRouteName");
+      UrlBuilder.defaultBaseUrl.addRoute("/someRoute2", "someOtherRouteName");
       UrlBuilder.getRoute("someOtherRouteName").should.equal(
         "http://testurl.com/someRoute2"
       );
     });
   });
 
-  describe("setRoute", function () {
+  describe("addRoute", function () {
     it("Should insert routes correctly", function () {
       UrlBuilder.setBaseUrl("http://testurl.com");
-      UrlBuilder.setRoute("/someRoute", "someRouteName");
+      UrlBuilder.addRoute("/someRoute", "someRouteName");
       UrlBuilder.getRoute("someRouteName").should.equal(
         "http://testurl.com/someRoute"
       );
-      UrlBuilder.setRoute("/someRoute2", "someOtherRouteName");
+      UrlBuilder.addRoute("/someRoute2", "someOtherRouteName");
       UrlBuilder.getRoute("someOtherRouteName").should.equal(
         "http://testurl.com/someRoute2"
         );
@@ -67,14 +67,14 @@ describe("UrlBuilder.js", function () {
   describe("isRouteCreated", function () {
     it("Should return true if the route has been created", function () {
       UrlBuilder.setBaseUrl("http://testurl.com");
-      UrlBuilder.setRoute("/someRoute", "someRouteName");
+      UrlBuilder.addRoute("/someRoute", "someRouteName");
       UrlBuilder.isRouteCreated("someRouteName").should.equal(true);
-      UrlBuilder.setRoute("/someRoute", "someRouteName2");
+      UrlBuilder.addRoute("/someRoute", "someRouteName2");
       UrlBuilder.isRouteCreated("someRouteName2").should.equal(true);
     });
     it("Should return false if the route hasn't been created", function () {
       UrlBuilder.setBaseUrl("http://testurl.com");
-      UrlBuilder.setRoute("/someRoute", "someRouteName");
+      UrlBuilder.addRoute("/someRoute", "someRouteName");
       UrlBuilder.isRouteCreated("someRouteNameError").should.equal(false);
     });
   });
