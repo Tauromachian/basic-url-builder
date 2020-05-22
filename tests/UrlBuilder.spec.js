@@ -22,6 +22,10 @@ describe("UrlBuilder.js", function () {
       UrlBuilder.defaultBaseUrl.should.be.a("object");
       UrlBuilder.routes.should.be.a("map");
     });
+    it("Should insert the url with the name correctly", function() {
+      UrlBuilder.setBaseUrl("http://testurl.com", "dev");
+      UrlBuilder.routes.get("dev").getBaseUrl().should.equal("http://testurl.com");
+    });
   });
 
   describe("getBaseUrl", function () {
