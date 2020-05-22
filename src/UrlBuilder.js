@@ -16,7 +16,7 @@ class UrlBuilder {
     return 0;
   }
 
-  static baseUrl(name){
+  static getUrlSet(name){
     return this.routes.get(name);
   }
 
