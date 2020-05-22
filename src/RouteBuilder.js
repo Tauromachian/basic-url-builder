@@ -9,7 +9,7 @@ class RouteBuilder {
    * @param {String} url Url of the route
    * @param {String} routeName Name Of the route
    */
-  setRoute(url, routeName) {
+  addRoute(url, routeName) {
     if (routeName) {
       this.routes.set(routeName, this._makeUrl(url));
       return 1;
