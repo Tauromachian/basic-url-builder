@@ -39,6 +39,14 @@ class RouteBuilder {
   isRouteCreated(routeName) {
     return this.routes.has(routeName);
   }
+
+  setBaseUrl(url){
+    this.baseUrl = url;
+  }
+
+  getBaserUrl(){
+    return this.baseUrl;
+  }
 }
 
 module.exports = RouteBuilder;
