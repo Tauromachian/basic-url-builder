@@ -25,19 +25,19 @@ Browser import the min.js file.
 
 UrlBuilder is a static class, that means you don't instantiate it but call the methods directly, it also means that no matter where you define the routes you can use them anywhere later.
 
-The routes can be named and this is recommended use.
-
 Methods:
 
-Warning at the current time using setBaseUrl for a second time will destroy the routes.
-
-- setBaseUrl(url)
-- getBaseUrl()
-- setRoute(url, routeName)
+- setBaseUrl(url, name)
+- addBaseUrl(url, name)
+- setDefaultUrl(name)
+- getBaseUrl(name)
+- addBaseUrl(url, name)
+- getUrlSet(name)
+- addRoute(url, routeName)
 - getRoute(routeName)
 - isRouteCreated(url)
 
-Example:
+Example, shows the use in different classes:
 
 SomeClass1.js 
 ```
@@ -56,4 +56,54 @@ SomeClass2.js
 const UrlBuilder = require('basic-url-builder');
 
 console.log(UrlBuilder.getRoute('service'));
+```
+
+Is posible to have more than one baseUrl. Each baseUrl defines a collection. The different collections are accesible either by using the name of the base Url or setting the default baseUrl.
+
+Example:
+
+```
+const UrlBuilder = require("basic-url-builder");
+
+UrlBuilder.setBaseUrl("http://test.url", "name1");
+UrlBuilder.setBaseUrl("http://test.url", "name2");
+
+//This routes are inserted to the name1 baseUrl
+UrlBuilder.addRoute("/someRoute/test", "routeName");
+UrlBuilder.addRoute("/someRoute/test1", "routeName1");
+UrlBuilder.addRoute("/someRoute/test2", "routeName2");
+
+//This routes are inserted to the name2 baseUrl
+UrlBuilder.urlSet("name2").addRoute("/someRoute/test2", "routeName2");
+UrlBuilder.urlSet("name2").addRoute("/someRoute/test2", "routeName2");
+UrlBuilder.urlSet("name2").addRoute("/someRoute/test2", "routeName2");
+
+//You can then get them by
+
+UrlBuilder.getRoute("/someRoute/test2", "routeName2");
+UrlBuilder.urlSet("name2").getRoute("/someRoute/test2", "routeName2");
+```
+
+Example using the setDefaultUrl method:
+```
+const UrlBuilder = require("basic-url-builder");
+
+UrlBuilder.setBaseUrl("http://test.url", "name1");
+UrlBuilder.setBaseUrl("http://test.url", "name2");
+
+//This routes are inserted to the name1 baseUrl
+UrlBuilder.addRoute("/someRoute/test", "routeName");
+UrlBuilder.addRoute("/someRoute/test1", "routeName1");
+UrlBuilder.addRoute("/someRoute/test2", "routeName2");
+
+//This routes are inserted to the name2 baseUrl
+UrlBuilder.setDefaultUrl("name2");
+UrlBuilder.addRoute("/someRoute/test2", "routeName2");
+UrlBuilder.addRoute("/someRoute/test2", "routeName2");
+UrlBuilder.addRoute("/someRoute/test2", "routeName2");
+
+//You can then get them by
+
+UrlBuilder.getRoute("/someRoute/test2", "routeName2");
+UrlBuilder.urlSet("name2").getRoute("/someRoute/test2", "routeName2");
 ```
