@@ -23,13 +23,8 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
   }
 
   addRoute(url, name) {
-    if (name) {
-      this.routes.set(name, this._makeUrl(url));
-      return 1;
-    } else {
-      this.routes.set(url, this._makeUrl(url));
-      return 1;
-    }
+    this.defaultUrlSet.addRoute(url, name);
+    return 1;
   }
 
   getRoute(name) {
