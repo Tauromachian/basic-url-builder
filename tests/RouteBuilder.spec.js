@@ -10,6 +10,11 @@ describe("RouteBuilder.js", function () {
   });
   
   describe("addRoute", function () {
+    it("Should not insert correctly if no route is passed", function () {
+      let routeBuilder = new RouteBuilder("http://testurl.com");
+      routeBuilder.addRoute("", 'someRouteName');
+      expect(routeBuilder.routes.get("someRouteName")).to.be.undefined;
+    });
     it("Should insert routes correctly", function () {
       let routeBuilder = new RouteBuilder("http://testurl.com");
       routeBuilder.addRoute("/someRoute", 'someRouteName');
