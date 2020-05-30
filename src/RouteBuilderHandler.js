@@ -1,4 +1,5 @@
 const AbstractRouteBuilder = require("./AbstractRouteBuilder");
+const RouteBuilder = require("./RouteBuilder");
 
 class RouteBuilderHandler extends AbstractRouteBuilder {
   constructor(routeSet, name) {
@@ -14,8 +15,11 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
       this.defaultUrlSet = this.routes[name];
       this.routes[name].setBaseUrl(url);
     }
-    this.routes[name] = calculateRoutes();
-    this.routes[name].setBaseUrl(url);
+
+    let routeBuilder = new RouteBuilder(url);
+    this.routes[name] = routeBuilder;
+    this.routeBuilder.addRoutes(this._calculateRoutes());
+
   }
 
   getBaseUrl(name) {
