@@ -2,6 +2,7 @@ const AbstractRouteBuilder = require("./AbstractRouteBuilder");
 
 class RouteBuilderHandler extends AbstractRouteBuilder {
   constructor(routeSet, name) {
+    super();
     this.defaultUrlSet = routeSet;
     this.routes = {
       [name]: routeSet
