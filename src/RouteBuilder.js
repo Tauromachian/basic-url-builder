@@ -15,12 +15,12 @@ class RouteBuilder extends AbstractRouteBuilder {
     return this.baseUrl;
   }
 
-  addRoute(url, routeName) {
-    if (routeName) {
-      this.routes.set(routeName, this._makeUrl(url));
+  addRoute(route, name) {
+    if (name) {
+      this.routes.set(name, this._makeUrl(route));
       return 1;
     } else {
-      this.routes.set(url, this._makeUrl(url));
+      this.routes.set(route, this._makeUrl(route));
       return 1;
     }
   }
