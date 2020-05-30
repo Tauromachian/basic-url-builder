@@ -40,6 +40,31 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
     return this.defaultUrlSet.isRouteCreated(name);
   }
 
+  _makeUrl(url, baseUrl) {
+    const newUrl = baseUrl + url;
+    return newUrl;
+  }
+
+  _calculateRoutes(url) {
+    let routes = {};
+    for (const key in this.routes) {
+      if (this.routes.hasOwnProperty(key)) {
+        const routeBuilder = this.routes[key];
+        const baseUrl = routeBuilder.getBaseUrl();
+        const routeMap = routeBuilder.routes;
+        const keys = routeMap.keys();
+        for (const key of keys) {
+           const route = this._getRouteWithoutBaseUrl(routeMap.get(key), baseUrl);
+           routes[key] = this._makeUrl(route, baseUrl);
+        }
+      }
+    }
+  }
+
+  _getRouteWithoutBaseUrl(url, baseUrl) {
+    return url.replace(baseUrl, "");
+  }
+
 }
 
 module.exports = RouteBuilderHandler;
