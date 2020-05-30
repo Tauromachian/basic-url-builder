@@ -53,6 +53,11 @@ describe("RouteBuilder.js", function () {
         .getRoute("someOtherRouteName")
         .should.equal("http://testurl.com/someRoute2");
     });
+    it("Should return undefined", function () {
+      let routeBuilder = new RouteBuilder("http://testurl.com");
+      routeBuilder.addRoute("", "someRouteName");
+      expect(routeBuilder.getRoute("someRouteName")).to.be.undefined;
+    });
   });
 
   describe("isRouteCreated", function () {
