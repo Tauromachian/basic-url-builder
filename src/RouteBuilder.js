@@ -31,6 +31,14 @@ class RouteBuilder extends AbstractRouteBuilder {
     }
   }
 
+  addRoutes(routes){
+    for (const key in routes) {
+      if (routes.hasOwnProperty(key)) {
+        this.routes.set(key, routes[key]);        
+      }
+    }
+  }
+
   getRoute(routeName) {
     return this.routes.get(routeName);
   }
