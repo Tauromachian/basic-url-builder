@@ -2,6 +2,7 @@ const AbstractRouteBuilder = require("./AbstractRouteBuilder");
 
 class RouteBuilder extends AbstractRouteBuilder {
   constructor(baseUrl) {
+    super();
     this.baseUrl = baseUrl;
     this.routes = new Map();
   }
