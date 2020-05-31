@@ -1,6 +1,6 @@
 const chai = require("chai");
 const expect = chai.expect;
-const should = chai.should();
+chai.should();
 
 const RouteBuilderHandler = require("../src/RouteBuilderHandler");
 const RouteBuilder = require("../src/RouteBuilder");
