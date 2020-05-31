@@ -12,8 +12,8 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
 
   setBaseUrl(url, name) {
     if(this.routes[name]){
-      this.defaultUrlSet = this.routes[name];
       this.routes[name].setBaseUrl(url);
+      return 0;
     }
 
     let routeBuilder = new RouteBuilder(url);
