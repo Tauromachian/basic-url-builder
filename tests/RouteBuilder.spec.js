@@ -74,4 +74,11 @@ describe("RouteBuilder.js", function () {
       routeBuilder.isRouteCreated("someRouteNameError").should.equal(false);
     });
   });
+
+  describe("getBaseUrl", function () {
+    it("Should return the base url", function () {
+      let routeBuilder = new RouteBuilder("http://testurl.com");
+      routeBuilder.getBaseUrl().should.be.equal("http://testurl.com");
+    });
+  });
 });
