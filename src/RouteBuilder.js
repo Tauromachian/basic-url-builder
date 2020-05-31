@@ -33,7 +33,7 @@ class RouteBuilder extends AbstractRouteBuilder {
 
   addRoutes(routes){
     for (const key in routes) {
-      if (routes.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(routes, key)) {
         this.routes.set(key, routes[key]);        
       }
     }

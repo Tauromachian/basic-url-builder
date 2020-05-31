@@ -44,10 +44,10 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
     return newUrl;
   }
 
-  _calculateRoutes(url) {
+  _calculateRoutes() {
     let routes = {};
     for (const key in this.routes) {
-      if (this.routes.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(this.routes, key)) {
         const routeBuilder = this.routes[key];
         const baseUrl = routeBuilder.getBaseUrl();
         const routeMap = routeBuilder.routes;
