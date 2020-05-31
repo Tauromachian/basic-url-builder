@@ -22,8 +22,8 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
 
   }
 
-  getBaseUrl(name) {
-    return this.routes[name].name;
+  getBaseUrl() {
+    return this.defaultUrlSet.getBaseUrl();
   }
 
   addRoute(url, name) {
