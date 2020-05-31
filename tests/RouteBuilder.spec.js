@@ -81,4 +81,12 @@ describe("RouteBuilder.js", function () {
       routeBuilder.getBaseUrl().should.be.equal("http://testurl.com");
     });
   });
+
+  describe("setBaseUrl", function () {
+    it("Should insert correctly the base url", function () {
+      let routeBuilder = new RouteBuilder("http://testurl.com");
+      routeBuilder.setBaseUrl("http://secondtesturl.com");
+      routeBuilder.getBaseUrl().should.be.equal("http://secondtesturl.com");
+    });
+  });
 });
