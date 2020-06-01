@@ -48,7 +48,7 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
     return this.defaultUrlSet.isRouteCreated(name);
   }
 
-  _setDefaultUrlSet(name) {
+  setDefaultUrlSet(name) {
     if (!name) {
       return 0;
     }
