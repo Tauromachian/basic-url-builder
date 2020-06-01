@@ -27,8 +27,16 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
   }
 
   addRoute(url, name) {
-    this.defaultUrlSet.addRoute(url, name);
-    return 1;
+    if(!url || !name){
+      return 1;
+    }
+    const keys = Object.keys(this.routes);
+
+    for (const key of keys) {
+      this.routes[key].addRoute(url, name);
+    }
+
+    return 0;
   }
 
   getRoute(name) {
