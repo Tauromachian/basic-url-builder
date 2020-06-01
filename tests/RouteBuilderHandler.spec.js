@@ -65,7 +65,7 @@ describe("RouteBuilderHandler.js", function () {
       let routeBuilder = new RouteBuilder("http://testurl.com");
       let routeBuilderHandler = new RouteBuilderHandler(routeBuilder, "dev");
 
-      routeBuilderHandler.getBaseUrl("dev").should.equal("http://testurl.com");
+      routeBuilderHandler.getBaseUrl().should.equal("http://testurl.com");
     });
   });
 
@@ -76,7 +76,7 @@ describe("RouteBuilderHandler.js", function () {
 
       routeBuilderHandler.setBaseUrl("http://someothertesturl.com", "dev");
       routeBuilderHandler
-        .getBaseUrl("dev")
+        .getBaseUrl()
         .should.equal("http://someothertesturl.com");
     });
   });
