@@ -37,6 +37,8 @@ class AbstractRouteBuilder {
    * @param {String} routeName Name of the route
    */
   isRouteCreated(name) {}
+
+  _setDefaultBaseUrl(name) {}
 }
 
 module.exports = AbstractRouteBuilder;
