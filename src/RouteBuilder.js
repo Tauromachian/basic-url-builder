@@ -13,7 +13,8 @@ class RouteBuilder extends AbstractRouteBuilder {
     }
     const oldBaseUrl = this.baseUrl;
     this.baseUrl = url;
-    this._calculateRoutes(oldBaseUrl);
+    const newRoutes = this._calculateRoutes(oldBaseUrl, this.routes);
+    this.routes = newRoutes;
   }
 
   getBaseUrl() {
@@ -48,17 +49,17 @@ class RouteBuilder extends AbstractRouteBuilder {
     return this.routes.has(routeName);
   }
 
-  _calculateRoutes(oldBaseUrl) {
+  _calculateRoutes(oldBaseUrl, oldRoutes) {
     let routes = new Map();
-    const keys = this.routes.keys();
+    const keys = oldRoutes.keys();
 
     for (const key of keys) {
-      const completeUrl = this.routes.get(key);
+      const completeUrl = oldRoutes.get(key);
       const route = this._getRouteWithoutBaseUrl(completeUrl, oldBaseUrl);
       const newCompleteUrl = this._makeUrl(route);
       routes.set(key, newCompleteUrl);
     }
-    this.routes = routes;
+    return routes;
   }
 
   _getRouteWithoutBaseUrl(url, baseUrl) {
