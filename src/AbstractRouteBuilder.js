@@ -4,7 +4,14 @@ class AbstractRouteBuilder {
    * @param {String} url Base url to work with
    * @param {String} name Name of the url
    */
-  setBaseUrl(url, name) {}
+  setBaseUrl(url) {
+    if (!url) {
+      return 0;
+    }
+    return this._setBaseUrl(url);
+  }
+
+  _setBaseUrl(url) {}
 
   /**
    * Returns the base url who's name is introduced

@@ -7,10 +7,7 @@ class RouteBuilder extends AbstractRouteBuilder {
     this.routes = new Map();
   }
 
-  setBaseUrl(url) {
-    if (!url) {
-      return 0;
-    }
+  _setBaseUrl(url) {
     const oldBaseUrl = this.baseUrl;
     this.baseUrl = url;
     const newRoutes = this._calculateRoutes(oldBaseUrl, this.routes);

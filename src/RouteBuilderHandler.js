@@ -10,13 +10,8 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
     };
   }
 
-  setBaseUrl(url, name) {
-    if(!this.routes[name]){
-      return 0;
-    }
-
-    this.routes[name].setBaseUrl(url);
-    return 1;
+  _setBaseUrl(url) {
+    this.defaultUrlSet.setBaseUrl(url);
   }
 
   addBaseUrl(url, name) {
