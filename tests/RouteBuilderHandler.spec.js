@@ -54,7 +54,18 @@ describe("RouteBuilderHandler.js", function () {
       let routeBuilder = new RouteBuilder("http://testurl.com");
       let routeBuilderHandler = new RouteBuilderHandler(routeBuilder);
       routeBuilderHandler.addRoute("/someRoute", "someRouteName");
-      routeBuilderHandler.isRouteCreated("someRouteNameError").should.equal(false);
+      routeBuilderHandler
+        .isRouteCreated("someRouteNameError")
+        .should.equal(false);
+    });
+  });
+
+  describe("getBaseUrl", function () {
+    it("Should return the defaultUrlSet base url", function () {
+      let routeBuilder = new RouteBuilder("http://testurl.com");
+      let routeBuilderHandler = new RouteBuilderHandler(routeBuilder, "dev");
+
+      routeBuilderHandler.getBaseUrl("dev").should.equal("http://testurl.com");
     });
   });
 });
