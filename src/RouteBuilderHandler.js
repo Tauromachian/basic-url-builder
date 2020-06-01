@@ -6,16 +6,20 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
     super();
     this.defaultUrlSet = routeSet;
     this.routes = {
-      [name]: routeSet
+      [name]: routeSet,
     };
   }
 
   setBaseUrl(url, name) {
-    if(this.routes[name]){
-      this.routes[name].setBaseUrl(url);
+    if(!this.routes[name]){
       return 0;
     }
 
+    this.routes[name].setBaseUrl(url);
+    return 1;
+  }
+
+  addBaseUrl(url, name) {
     let routeBuilder = new RouteBuilder(this.defaultUrlSet.getBaseUrl());
     this.routes[name] = routeBuilder;
     routeBuilder.routes = new Map(this.defaultUrlSet.routes);
@@ -45,17 +49,16 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
   }
 
   _setDefaultUrlSet(name) {
-    if(!name) {
+    if (!name) {
       return 0;
     }
 
-    if(!Object.keys(this.routes).includes(name)){
+    if (!Object.keys(this.routes).includes(name)) {
       return 0;
     }
 
     this.defaultUrlSet = this.routes[name];
   }
-
 }
 
 module.exports = RouteBuilderHandler;
