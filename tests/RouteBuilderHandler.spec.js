@@ -80,4 +80,20 @@ describe("RouteBuilderHandler.js", function () {
         .should.equal("http://someothertesturl.com");
     });
   });
+
+  describe("addBaseUrl", function () {
+    it("Should add correctly the new base url", function () {
+      let routeBuilder = new RouteBuilder("http://testurl.com");
+      let routeBuilderHandler = new RouteBuilderHandler(routeBuilder, "dev");
+
+      routeBuilderHandler.addBaseUrl("http://someothertesturl.com", "prod");
+
+      routeBuilderHandler.defaultUrlSet = routeBuilderHandler.routes["prod"];
+
+      routeBuilderHandler
+        .getBaseUrl()
+        .should.equal("http://someothertesturl.com");
+    });
+  });
+
 });
