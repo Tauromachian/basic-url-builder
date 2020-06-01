@@ -38,7 +38,7 @@ class AbstractRouteBuilder {
    */
   isRouteCreated(name) {}
 
-  _setDefaultBaseUrl(name) {}
+  _setDefaultUrlSet(name) {}
 }
 
 module.exports = AbstractRouteBuilder;
