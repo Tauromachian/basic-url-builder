@@ -18,8 +18,7 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
 
     let routeBuilder = new RouteBuilder(url);
     this.routes[name] = routeBuilder;
-    this.routeBuilder.addRoutes(this._calculateRoutes());
-
+    routeBuilder.routes = new Map(this.defaultUrlSet.routes);
   }
 
   getBaseUrl() {
@@ -27,9 +26,6 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
   }
 
   addRoute(url, name) {
-    if(!url || !name){
-      return 1;
-    }
     const keys = Object.keys(this.routes);
 
     for (const key of keys) {
