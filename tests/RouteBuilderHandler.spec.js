@@ -96,4 +96,19 @@ describe("RouteBuilderHandler.js", function () {
     });
   });
 
+  describe("setDefaultUrlSet", function () {
+    it("Should change the default url set correctlly", function () {
+      let routeBuilder = new RouteBuilder("http://testurl.com");
+      let routeBuilderHandler = new RouteBuilderHandler(routeBuilder, "dev");
+
+      routeBuilderHandler.addBaseUrl("http://someothertesturl.com", "prod");
+
+      routeBuilderHandler.setDefaultUrlSet("prod");
+
+      routeBuilderHandler
+        .getBaseUrl()
+        .should.equal("http://someothertesturl.com");
+    });
+  });
+
 });
