@@ -22,10 +22,7 @@ class RouteBuilder extends AbstractRouteBuilder {
   }
 
   addRoute(route, name) {
-    if (!route) {
-      return 0;
-    }
-    if (!name) {
+    if (!route || !name) {
       return 0;
     }
     this.routes.set(name, this._makeUrl(route));
