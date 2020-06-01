@@ -74,7 +74,7 @@ describe("RouteBuilderHandler.js", function () {
       let routeBuilder = new RouteBuilder("http://testurl.com");
       let routeBuilderHandler = new RouteBuilderHandler(routeBuilder, "dev");
 
-      routeBuilderHandler.setBaseUrl("http://someothertesturl.com", "dev");
+      routeBuilderHandler.setBaseUrl("http://someothertesturl.com");
       routeBuilderHandler
         .getBaseUrl()
         .should.equal("http://someothertesturl.com");
