@@ -68,4 +68,16 @@ describe("RouteBuilderHandler.js", function () {
       routeBuilderHandler.getBaseUrl("dev").should.equal("http://testurl.com");
     });
   });
+
+  describe("setBaseUrl", function () {
+    it("Should replace the old baseUrl with the new succesfully", function () {
+      let routeBuilder = new RouteBuilder("http://testurl.com");
+      let routeBuilderHandler = new RouteBuilderHandler(routeBuilder, "dev");
+
+      routeBuilderHandler.setBaseUrl("http://someothertesturl.com", "dev");
+      routeBuilderHandler
+        .getBaseUrl("dev")
+        .should.equal("http://someothertesturl.com");
+    });
+  });
 });
