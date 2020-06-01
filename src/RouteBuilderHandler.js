@@ -43,6 +43,19 @@ class RouteBuilderHandler extends AbstractRouteBuilder {
   isRouteCreated(name) {
     return this.defaultUrlSet.isRouteCreated(name);
   }
+
+  _setDefaultUrlSet(name) {
+    if(!name) {
+      return 0;
+    }
+
+    if(!Object.keys(this.routes).includes(name)){
+      return 0;
+    }
+
+    this.defaultUrlSet = this.routes[name];
+  }
+
 }
 
 module.exports = RouteBuilderHandler;
