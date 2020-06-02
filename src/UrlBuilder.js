@@ -1,4 +1,6 @@
 const RouteBuilder = require("./RouteBuilder");
+const RouteBuilderHandler = require("./RouteBuilderHandler");
+
 
 class UrlBuilder {
   /**
@@ -10,7 +12,7 @@ class UrlBuilder {
       return 1;
     }
 
-    if(!this.defaultBaseUrl){
+    if (!this.defaultBaseUrl) {
       this.defaultBaseUrl = new RouteBuilder(url);
       this.routes = new Map();
       this.routes.set(name, this.defaultBaseUrl);
@@ -19,7 +21,7 @@ class UrlBuilder {
     return 0;
   }
 
-  static getUrlSet(name){
+  static getUrlSet(name) {
     return this.routes.get(name);
   }
 
@@ -31,11 +33,19 @@ class UrlBuilder {
   }
 
   static setDefaultUrl(name) {
+    this.routes.get(name).setDefaultUrlSet(name);
     this.defaultBaseUrl = this.routes.get(name);
   }
 
   static addBaseUrl(url, name) {
     this.routes.set(name, new RouteBuilder(url));
+  }
+
+  static addUrlSetBrother(url, name, brotherName) {
+    const route = this.routes.get(brotherName);
+    let routeBuilderHandler = new RouteBuilderHandler(route);
+    routeBuilderHandler.addBaseUrl(url, name);
+    this.routes.set(name, routeBuilderHandler);
   }
 
   /**
