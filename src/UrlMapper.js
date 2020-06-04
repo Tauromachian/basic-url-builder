@@ -2,7 +2,7 @@ let UrlBuilder = require("./UrlBuilder");
 
 class UrlMapper {
   static map(urlSets) {
-    this.currentBaseUrlName;
+    this.currentBaseUrlName = "";
 
     if (urlSets instanceof Array) {
       this.arrangeArray(urlSets);
@@ -13,7 +13,8 @@ class UrlMapper {
 
   static arrangeArray(urlSets) {
     for (let i = 0; i < urlSets.length; i++) {
-      this.currentBaseUrlName = this.getFirstUrlName(urlSets[0]);  
+      this.currentBaseUrlName = this.getFirstUrlName(urlSets[0]);
+
       const set = urlSets[i];
       this.setBaseUrlsToUrlBuilder(set);
       this.setRoutes(set);
@@ -21,18 +22,20 @@ class UrlMapper {
   }
 
   static setOne(urlSet) {
+    this.currentBaseUrlName = this.getFirstUrlName(urlSet);
     this.setBaseUrlsToUrlBuilder(urlSet);
     this.setRoutes(urlSet);
   }
 
   static setBaseUrlsToUrlBuilder(set) {
     const baseUrls = this.getBaseUrls(set);
+
     if (baseUrls instanceof Object) {
       const keys = Object.keys(baseUrls);
       let i = 0;
       for (const key of keys) {
         if (i === 0) {
-          UrlBuilder.addBaseUrl(baseUrls[key], key);
+          UrlBuilder.setBaseUrl(baseUrls[key], key);
           i++;
         } else {
           UrlBuilder.addUrlSetBrother(
@@ -57,7 +60,7 @@ class UrlMapper {
 
   static getFirstUrlName(set) {
     const keys = Object.keys(set.baseUrls);
-    return keys[0];    
+    return keys[0];
   }
 
   static getBaseUrls(set) {
