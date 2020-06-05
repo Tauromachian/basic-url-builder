@@ -1,5 +1,5 @@
 class UrlList {
-  constructor(baseUrl) {
+  constructor() {
     this.routeSets = {};
     this.defaultSet = null;
   }
@@ -13,12 +13,17 @@ class UrlList {
   }
 
   addRoute(route, name) {
-    this.defaultSet.addRoute(route, name);
+    const keys = Object.keys(this.routeSets);
+    
+    for (const key of keys) {
+      this.routeSets[key].addRoute(route, name);
+    }
+
     return 1;
   }
 
   getRoute(name) {
-    return this.routes.get(name);
+    return this.defaultSet.getRoute(name);
   }
 
   isRouteCreated(name) {
