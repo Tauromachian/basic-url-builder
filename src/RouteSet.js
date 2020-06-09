@@ -1,6 +1,5 @@
 class RouteSet {
   constructor(baseUrl) {
-    super();
     this.baseUrl = baseUrl;
     this.routes = new Map();
   }
