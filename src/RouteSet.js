@@ -16,6 +16,9 @@ class RouteSet {
   }
 
   addRoute(route, name) {
+    if(!route || !name) {
+      return 0;
+    }
     this.routes.set(name, this._makeUrl(route));
     return 1;
   }
