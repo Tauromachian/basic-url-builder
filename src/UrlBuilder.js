@@ -58,18 +58,18 @@ class UrlBuilder {
 
   /**
    * Gets the route using the name
-   * @param {String} routeName Name of the route or the route itself if no name was provided at insert
+   * @param {String} name Name of the route or the route itself if no name was provided at insert
    */
-  static getRoute(routeName) {
-    return this.defaultBaseUrl.getRoute(routeName);
+  static getRoute(name) {
+    return this.defaultBaseUrl.getRoute(name);
   }
 
   /**
    * Checks if the route was created
-   * @param {String} routeName Name of the route
+   * @param {String} name Name of the route
    */
-  static isRouteCreated(routeName) {
-    return this.defaultBaseUrl.isRouteCreated(routeName);
+  static isRouteCreated(name) {
+    return this.defaultBaseUrl.isRouteCreated(name);
   }
 }
 
