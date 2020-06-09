@@ -1,6 +1,5 @@
 const UrlList = require("./UrlList");
 
-
 class UrlBuilder {
   /**
    * Sets the base url of the UrlBuilder
@@ -20,23 +19,28 @@ class UrlBuilder {
     return 0;
   }
 
-  static getUrlSet(name) {
-    return this.routes.get(name);
+  static build() {
+
   }
 
   static getUrlList(name) {
     return this.routes.get(name);
-  }
-    return this.routes.get(name).getBaseUrl();
   }
   
   static setDefaultUrlList(name) {
     this.routes.get(name).setDefaultUrlSet(name);
     this.defaultBaseUrl = this.routes.get(name);
   }
-
+  
   static addBaseUrl(url, name) {
-    this.routes.set(name, new RouteBuilder(url));
+    this.routes.set(name, new UrlList(url));
+  }
+
+  static getBaseUrl(name) {
+    if (!name) {
+      return this.defaultBaseUrl.getBaseUrl();
+    }
+    return this.routes.get(name).getBaseUrl();
   }
 
   static addUrlSetBrother(url, name, brotherName) {
