@@ -12,7 +12,7 @@ class UrlBuilder {
     }
 
     if (!this.defaultBaseUrl) {
-      this.defaultBaseUrl = new RouteBuilder(url);
+      this.defaultBaseUrl = new UrlList(url, name);
       this.routes = new Map();
       this.routes.set(name, this.defaultBaseUrl);
     }
