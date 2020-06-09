@@ -24,10 +24,9 @@ class UrlBuilder {
     return this.routes.get(name);
   }
 
-  static getBaseUrl(name) {
-    if (!name) {
-      return this.defaultBaseUrl.getBaseUrl();
-    }
+  static getUrlList(name) {
+    return this.routes.get(name);
+  }
     return this.routes.get(name).getBaseUrl();
   }
 
