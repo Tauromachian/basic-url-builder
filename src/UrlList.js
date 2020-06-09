@@ -1,9 +1,10 @@
 const RouteSet = require("./RouteSet");
 
 class UrlList {
-  constructor() {
+  constructor(url, name) {
     this.routeSets = {};
-    this.defaultSet = null;
+    this.defaultSet = new RouteSet(url);
+    this.routeSets[name] = this.defaultSet;
   }
 
   addBaseUrl(url, name) {
@@ -11,10 +12,6 @@ class UrlList {
     newRouteSet.routes = this.defaultSet.routes;
     newRouteSet.setBaseUrl(url);
     this.routeSets[name] = newRouteSet;
-  }
-
-  setBaseUrl(url) {
-    this.defaultSet.setBaseUrl(url);
   }
 
   getBaseUrl() {
