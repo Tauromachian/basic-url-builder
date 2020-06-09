@@ -51,4 +51,4 @@ class RouteSet {
   }
 }
 
-module.exports = RouteBuilder;
+module.exports = RouteSet;
