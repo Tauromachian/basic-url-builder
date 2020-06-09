@@ -51,10 +51,10 @@ class UrlBuilder {
   /**
    * Creates the complete named route that can be later on used
    * @param {String} url Url of the route
-   * @param {String} routeName Name Of the route
+   * @param {String} name Name Of the route
    */
-  static addRoute(url, routeName) {
-    this.defaultBaseUrl.addRoute(url, routeName);
+  static addRoute(url, name) {
+    this.defaultBaseUrl.addRoute(url, name);
   }
 
   /**
