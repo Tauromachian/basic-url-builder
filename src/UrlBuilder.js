@@ -42,10 +42,9 @@ class UrlBuilder {
   }
 
   static addUrlSetBrother(url, name, brotherName) {
-    const route = this.routes.get(brotherName);
-    let routeBuilderHandler = new RouteBuilderHandler(route);
-    routeBuilderHandler.addBaseUrl(url, name);
-    this.routes.set(name, routeBuilderHandler);
+    let brotherUrlList = this.routes.get(brotherName);
+    brotherUrlList.addBaseUrl(url, name);
+    this.routes.set(name, brotherUrlList);
   }
 
   /**
