@@ -36,6 +36,21 @@ Methods:
 - addRoute(url, routeName)
 - getRoute(routeName)
 - isRouteCreated(url)
+- build(urlSet)
+
+Using the build method
+```
+UrlBuilder.build({
+  baseUrls: {
+    dev: "http://firsttesturl",
+    prod: "http://secondtesturl",
+  },
+  routes: {
+    service: "/service",
+    products: "/products",
+  },
+});
+```
 
 Example, shows the use in different classes:
 
