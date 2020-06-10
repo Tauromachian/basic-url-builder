@@ -77,4 +77,45 @@ describe("UrlBuilder.js", function () {
       UrlBuilder.isRouteCreated("someRouteNameError").should.equal(false);
     });
   });
+
+  describe("build", function () {
+    this.beforeAll(function () {
+      UrlBuilder.build({
+        baseUrls: {
+          dev: "http://firsttesturl",
+          prod: "http://secondtesturl",
+        },
+        routes: {
+          service: "/service",
+          products: "/products",
+        },
+      });
+    });
+
+    it("Should have the right keys", function () {
+      UrlBuilder.routes.should.have.all.keys(["dev", "prod"]);
+    });
+  
+    it("Shoud not be null or undefined", function () {
+
+      expect(UrlBuilder.routes.get("dev")).to.exist;
+      expect(UrlBuilder.routes.get("prod")).to.exist;
+    });
+  
+    it("Should return the right urls", function () {
+      expect(UrlBuilder.routes.get("dev").getRoute("service")).to.equal(
+        "http://firsttesturl/service"
+      );
+      expect(UrlBuilder.routes.get("dev").getRoute("products")).to.equal(
+        "http://firsttesturl/products"
+      );
+      UrlBuilder.routes.get("prod").setDefaultSet("prod");
+      expect(UrlBuilder.routes.get("prod").getRoute("service")).to.equal(
+        "http://secondtesturl/service"
+      );
+      expect(UrlBuilder.routes.get("prod").getRoute("products")).to.equal(
+        "http://secondtesturl/products"
+      );
+    });
+  });
 });
