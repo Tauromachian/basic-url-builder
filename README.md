@@ -8,12 +8,12 @@ The filosofy of this module is define it once use it anywhere.
 
 CommonJS
 ```
-const UrlBuilder = require("basic-url-builder");
+const UrlBuilder = require("basic-url-builder").UrlBuilder;
 ```
 
 ES6 module syntax
 ```
-import UrlBuilder from "basic-url-builder";
+import { UrlBuilder } from "basic-url-builder";
 ```
 
 Browser import the min.js file.
