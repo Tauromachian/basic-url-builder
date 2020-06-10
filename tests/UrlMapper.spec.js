@@ -23,4 +23,9 @@ describe("Url Mapper.js", function () {
   it("Should have the right keys", function () {
     routes.should.have.all.keys(["dev", "prod"]);
   });
+
+  it("Shoud not be null or undefined", function () {
+    expect(routes.get("dev")).to.exist;
+    expect(routes.get("prod")).to.exist;
+  });
 });
