@@ -56,7 +56,7 @@ Example, shows the use in different classes:
 
 SomeClass1.js 
 ```
-const UrlBuilder = require('basic-url-builder');
+const UrlBuilder = require('basic-url-builder').UrlBuilder;
 const SomeClass2 = require('SomeClass2.js')
 
 UrlBuilder.setBaseUrl('http://someUrl.com');
@@ -68,7 +68,7 @@ console.log(UrlBuilder.getRoute('service'));
 
 SomeClass2.js
 ```
-const UrlBuilder = require('basic-url-builder');
+const UrlBuilder = require('basic-url-builder').UrlBuilder;
 
 console.log(UrlBuilder.getRoute('service'));
 ```
@@ -78,7 +78,7 @@ Is posible to have more than one baseUrl. Each baseUrl defines a collection. The
 Example:
 
 ```
-const UrlBuilder = require("basic-url-builder");
+const UrlBuilder = require("basic-url-builder").UrlBuilder;
 
 UrlBuilder.setBaseUrl("http://test.url", "name1");
 UrlBuilder.setBaseUrl("http://test.url", "name2");
@@ -101,7 +101,7 @@ UrlBuilder.urlSet("name2").getRoute("/someRoute/test2", "routeName2");
 
 Example using the setDefaultUrl method:
 ```
-const UrlBuilder = require("basic-url-builder");
+const UrlBuilder = require("basic-url-builder").UrlBuilder;
 
 UrlBuilder.setBaseUrl("http://test.url", "name1");
 UrlBuilder.setBaseUrl("http://test.url", "name2");
