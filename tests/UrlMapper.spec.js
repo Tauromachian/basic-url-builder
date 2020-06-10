@@ -2,15 +2,14 @@ const chai = require("chai");
 const expect = chai.expect;
 chai.should();
 
-const UrlMapper = require("../src/UrlMapper");
-const UrlBuilder = require("../src/UrlBuilder");
+const map = require("../src/UrlMapper");
 
 describe("Url Mapper.js", function () {
   it("Should exist", function () {
-    expect(UrlMapper).to.exist;
+    expect(map).to.exist;
   });
 
-  UrlMapper.map({
+  let routes = map({
     baseUrls: {
       dev: "http://firsttesturl",
       prod: "http://secondtesturl",
