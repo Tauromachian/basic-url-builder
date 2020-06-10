@@ -1,4 +1,5 @@
 const UrlList = require("./UrlList");
+const map = require("./UrlMapper");
 
 class UrlBuilder {
   /**
@@ -20,8 +21,9 @@ class UrlBuilder {
     return 0;
   }
 
-  static build() {
-
+  static build(urlSets) {
+    this.routes = map(urlSets);
+    this.defaultBaseUrl = this.routes.keys()[0];
   }
 
   static getUrlList(name) {
