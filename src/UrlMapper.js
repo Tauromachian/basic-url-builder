@@ -1,75 +1,49 @@
-let UrlBuilder = require("./UrlBuilder");
+const UrlList = require("../src/UrlList");
 
-class UrlMapper {
-  static map(urlSets) {
-    this.currentBaseUrlName = "";
 
-    if (urlSets instanceof Array) {
-      this.arrangeArray(urlSets);
-    } else {
-      this.setOne(urlSets);
-    }
-  }
-
-  static arrangeArray(urlSets) {
-    for (let i = 0; i < urlSets.length; i++) {
-      this.currentBaseUrlName = this.getFirstUrlName(urlSets[0]);
-
-      const set = urlSets[i];
-      this.setBaseUrlsToUrlBuilder(set);
-      this.setRoutes(set);
-    }
-  }
-
-  static setOne(urlSet) {
-    this.currentBaseUrlName = this.getFirstUrlName(urlSet);
-    this.setBaseUrlsToUrlBuilder(urlSet);
-    this.setRoutes(urlSet);
-  }
-
-  static setBaseUrlsToUrlBuilder(set) {
-    const baseUrls = this.getBaseUrls(set);
-
-    if (baseUrls instanceof Object) {
-      const keys = Object.keys(baseUrls);
-      let i = 0;
-      for (const key of keys) {
-        if (i === 0) {
-          UrlBuilder.setBaseUrl(baseUrls[key], key);
-          i++;
-        } else {
-          UrlBuilder.addUrlSetBrother(
-            baseUrls[key],
-            key,
-            this.currentBaseUrlName
-          );
-        }
-      }
-    } else {
-      return 1;
-    }
-  }
-
-  static setRoutes(set) {
-    const routes = this.getRoutes(set);
-    const keys = Object.keys(routes);
-    for (const key of keys) {
-      UrlBuilder.addRoute(routes[key], key);
-    }
-  }
-
-  static getFirstUrlName(set) {
-    const keys = Object.keys(set.baseUrls);
-    return keys[0];
-  }
-
-  static getBaseUrls(set) {
-    return set.baseUrls;
-  }
-
-  static getRoutes(set) {
-    return set.routes;
-  }
+function map(urlSets) {
+  const baseUrls = getBaseUrls(urlSets);
+  let urlList = createUrlList(baseUrls);
+  const routes = getRoutes(urlSets);
+  let urlListWithRoutes = setRoutesInUrlList(urlList, routes);
+  const urlMap = toMap(urlListWithRoutes);
+  return urlMap;
 }
 
-module.exports = UrlMapper;
+function toMap(urlList) {
+  let urlMap = new Map();
+  const keys = urlList.getBaseUrlNames();
+
+  for (const key of keys) {
+    urlMap.set(key, urlList);
+  }
+
+  return urlMap;
+}
+
+function createUrlList(baseUrls) {
+  const keys = Object.keys(baseUrls);
+  let urlList = new UrlList();
+  for (const key of keys) {
+    urlList.addBaseUrl(baseUrls[key], key);
+  }
+  return urlList;
+}
+
+function setRoutesInUrlList(urlList, routes) {
+  const keys = Object.keys(routes);
+  for (const key of keys) {
+    urlList.addRoute(routes[key], key);
+  }
+  return urlList;
+}
+
+function getBaseUrls(set) {
+  return set.baseUrls;
+}
+
+function getRoutes(set) {
+  return set.routes;
+}
+
+module.exports = map;
