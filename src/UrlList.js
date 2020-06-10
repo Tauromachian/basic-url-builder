@@ -22,6 +22,10 @@ class UrlList {
     return this.defaultSet.getBaseUrl();
   }
 
+  getBaseUrlNames() {
+    return Object.keys(this.routeSets);
+  }
+
   addRoute(route, name) {
     const keys = Object.keys(this.routeSets);
     
