@@ -20,4 +20,7 @@ describe("Url Mapper.js", function () {
     },
   });
 
+  it("Should have the right keys", function () {
+    routes.should.have.all.keys(["dev", "prod"]);
+  });
 });
