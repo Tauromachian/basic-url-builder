@@ -38,9 +38,14 @@ Methods:
 - isRouteCreated(url)
 - build(urlSet)
 
-Using the build method
+###Using the build method
+
+Example: 
+
+index.js
 ```
-const UrlBuilder = require('basic-url-builder');
+const UrlBuilder = require("basic-url-builder");
+const logRoute = require("./file");
 
 UrlBuilder.build({
   baseUrls: {
@@ -53,29 +58,48 @@ UrlBuilder.build({
   },
 });
 
-//Setting the default list is advised
 UrlBuilder.setDefaultUrlList("dev");
+logRoute();
+console.log(UrlBuilder.getRoute("service"));
 ```
 
-Example, shows the use in different classes:
+someFile.js
+```
+const UrlBuilder = require("basic-url-builder");
 
-SomeClass1.js 
+function logRoute() {
+  console.log(UrlBuilder.getRoute("service"));
+}
+
+module.exports = logRoute;
+```
+
+###Programmatically using UrlBuilder
+
+Example: 
+
+someFile1.js 
 ```
 const UrlBuilder = require('basic-url-builder');
-const SomeClass2 = require('SomeClass2.js')
+const logRoute = require('./someFile2.js')
 
 UrlBuilder.setBaseUrl('http://someUrl.com');
 
-UrlBuilder.setRoute('/service', 'service');
+UrlBuilder.addRoute('/service', 'service');
 
+logRoute();
 console.log(UrlBuilder.getRoute('service'));
 ```
 
-SomeClass2.js
+someFile2.js
 ```
-const UrlBuilder = require('basic-url-builder');
+const UrlBuilder = require("basic-url-builder");
 
-console.log(UrlBuilder.getRoute('service'));
+function logRoute() {
+  console.log(UrlBuilder.getRoute("service"));
+}
+
+module.exports = logRoute;
 ```
 
 Is posible to have more than one baseUrl. Each baseUrl defines a collection. The different collections are accesible either by using the name of the base Url or setting the default baseUrl.
@@ -83,10 +107,10 @@ Is posible to have more than one baseUrl. Each baseUrl defines a collection. The
 Example:
 
 ```
-const UrlBuilder = require("basic-url-builder");
+const UrlBuilder = require("./UrlBuilder");
 
 UrlBuilder.setBaseUrl("http://test.url", "name1");
-UrlBuilder.setBaseUrl("http://test.url", "name2");
+UrlBuilder.addBaseUrl("http://test1.url", "name2");
 
 //This routes are inserted to the name1 baseUrl
 UrlBuilder.addRoute("/someRoute/test", "routeName");
@@ -94,14 +118,13 @@ UrlBuilder.addRoute("/someRoute/test1", "routeName1");
 UrlBuilder.addRoute("/someRoute/test2", "routeName2");
 
 //This routes are inserted to the name2 baseUrl
-UrlBuilder.urlSet("name2").addRoute("/someRoute/test2", "routeName2");
-UrlBuilder.urlSet("name2").addRoute("/someRoute/test2", "routeName2");
-UrlBuilder.urlSet("name2").addRoute("/someRoute/test2", "routeName2");
+UrlBuilder.getUrlSet("name2").addRoute("/someRoute/test2", "routeName2");
+UrlBuilder.getUrlSet("name2").addRoute("/someRoute/test2", "routeName2");
+UrlBuilder.getUrlSet("name2").addRoute("/someRoute/test2", "routeName2");
 
 //You can then get them by
 
-UrlBuilder.getRoute("/someRoute/test2", "routeName2");
-UrlBuilder.urlSet("name2").getRoute("/someRoute/test2", "routeName2");
+UrlBuilder.getUrlSet("name2").getRoute("/someRoute/test2", "routeName2");
 ```
 
 Example using the setDefaultUrlList method:
