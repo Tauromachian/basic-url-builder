@@ -40,6 +40,8 @@ Methods:
 
 Using the build method
 ```
+const UrlBuilder = require('basic-url-builder');
+
 UrlBuilder.build({
   baseUrls: {
     dev: "http://firsttesturl",
@@ -50,6 +52,9 @@ UrlBuilder.build({
     products: "/products",
   },
 });
+
+//Setting the default list is advised
+UrlBuilder.setDefaultUrlList("dev");
 ```
 
 Example, shows the use in different classes:
