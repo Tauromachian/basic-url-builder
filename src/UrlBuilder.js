@@ -26,8 +26,8 @@ class UrlBuilder {
     this.defaultBaseUrl = this.routes.values().next().value;
   }
 
-  static getUrlList(name) {
-    return this.routes.get(name);
+  static getUrlSet(name) {
+    return this.routes.get(name).getRouteSet(name);
   }
   
   static setDefaultUrlList(name) {
