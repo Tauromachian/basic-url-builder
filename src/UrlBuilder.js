@@ -31,7 +31,7 @@ class UrlBuilder {
   }
   
   static setDefaultUrlList(name) {
-    this.routes.get(name).setDefaultUrlSet(name);
+    this.routes.get(name).setDefaultSet(name);
     this.defaultBaseUrl = this.routes.get(name);
   }
   
