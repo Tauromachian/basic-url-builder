@@ -23,7 +23,7 @@ class UrlBuilder {
 
   static build(urlSets) {
     this.routes = map(urlSets);
-    this.defaultBaseUrl = this.routes.keys()[0];
+    this.defaultBaseUrl = this.routes.values().next().value;
   }
 
   static getUrlList(name) {
