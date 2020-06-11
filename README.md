@@ -104,7 +104,7 @@ UrlBuilder.getRoute("/someRoute/test2", "routeName2");
 UrlBuilder.urlSet("name2").getRoute("/someRoute/test2", "routeName2");
 ```
 
-Example using the setDefaultUrl method:
+Example using the setDefaultUrlList method:
 ```
 const UrlBuilder = require("basic-url-builder");
 
@@ -117,7 +117,7 @@ UrlBuilder.addRoute("/someRoute/test1", "routeName1");
 UrlBuilder.addRoute("/someRoute/test2", "routeName2");
 
 //This routes are inserted to the name2 baseUrl
-UrlBuilder.setDefaultUrl("name2");
+UrlBuilder.setDefaultUrlList("name2");
 UrlBuilder.addRoute("/someRoute/test2", "routeName2");
 UrlBuilder.addRoute("/someRoute/test2", "routeName2");
 UrlBuilder.addRoute("/someRoute/test2", "routeName2");
