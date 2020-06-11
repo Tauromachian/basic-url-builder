@@ -26,6 +26,10 @@ class UrlList {
     return Object.keys(this.routeSets);
   }
 
+  getRouteSet(name) {
+    return this.routeSets[name];
+  }
+
   addRoute(route, name) {
     const keys = Object.keys(this.routeSets);
     
