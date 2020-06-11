@@ -36,7 +36,9 @@ class UrlBuilder {
   }
   
   static addBaseUrl(url, name) {
-    this.routes.set(name, new UrlList(url));
+    let newUrlList = new UrlList();
+    newUrlList.addBaseUrl(url, name);
+    this.routes.set(name, newUrlList);
   }
 
   static getBaseUrl(name) {
