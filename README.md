@@ -29,7 +29,7 @@ Methods:
 
 - setBaseUrl(url, name)
 - addBaseUrl(url, name)
-- setDefaultUrl(name)
+- setDefaultUrlList(name)
 - getBaseUrl(name)
 - addBaseUrl(url, name)
 - getUrlSet(name)
