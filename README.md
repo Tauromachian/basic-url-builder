@@ -7,17 +7,17 @@ The filosofy of this module is define it once use it anywhere.
 ##How to import
 
 CommonJS
-```
+```js
 const UrlBuilder = require("basic-url-builder");
 ```
 
 ES6 module syntax
-```
+```js
 import UrlBuilder from "basic-url-builder";
 ```
 
 Browser import the min.js file.
-```
+```js
 <script type="text/javascript" src="basic-url-builder.min.js"> 
 ```
 
@@ -43,7 +43,7 @@ Methods:
 Example: 
 
 index.js
-```
+```js
 const UrlBuilder = require("basic-url-builder");
 const logRoute = require("./file");
 
@@ -64,7 +64,7 @@ console.log(UrlBuilder.getRoute("service"));
 ```
 
 someFile.js
-```
+```js
 const UrlBuilder = require("basic-url-builder");
 
 function logRoute() {
@@ -79,7 +79,7 @@ module.exports = logRoute;
 Example: 
 
 someFile1.js 
-```
+```js
 const UrlBuilder = require('basic-url-builder');
 const logRoute = require('./someFile2.js')
 
@@ -92,7 +92,7 @@ console.log(UrlBuilder.getRoute('service'));
 ```
 
 someFile2.js
-```
+```js
 const UrlBuilder = require("basic-url-builder");
 
 function logRoute() {
@@ -106,7 +106,7 @@ Is posible to have more than one baseUrl. Each baseUrl defines a collection. The
 
 Example:
 
-```
+```js
 const UrlBuilder = require("./UrlBuilder");
 
 UrlBuilder.setBaseUrl("http://test.url", "name1");
@@ -128,7 +128,7 @@ UrlBuilder.getUrlSet("name2").getRoute("/someRoute/test2", "routeName2");
 ```
 
 Example using the setDefaultUrlList method:
-```
+```js
 const UrlBuilder = require("basic-url-builder");
 
 UrlBuilder.setBaseUrl("http://test.url", "name1");
