@@ -148,5 +148,5 @@ UrlBuilder.addRoute("/someRoute/test2", "routeName2");
 //You can then get them by
 
 UrlBuilder.getRoute("/someRoute/test2", "routeName2");
-UrlBuilder.urlSet("name2").getRoute("/someRoute/test2", "routeName2");
+UrlBuilder.getUrlSet("name2").getRoute("/someRoute/test2", "routeName2");
 ```
