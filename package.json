@@ -1,6 +1,6 @@
 {
   "name": "basic-url-builder",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "This module has the objective of providing a basic way of working with urls",
   "main": "dist/basic-url-builder.node.js",
   "unpkg": "dist/basic-url-builder.min.js",
